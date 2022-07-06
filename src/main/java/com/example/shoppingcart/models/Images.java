@@ -12,6 +12,7 @@ import java.sql.Timestamp;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "images")
 public class Images {
 
     @Id

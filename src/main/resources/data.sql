@@ -1,0 +1,1 @@
+insert into admins(id,name,email,phone,avatar,active,password) values(1,"bac","bac@gmail.com","0123123123","gdsgs","1","123@")
