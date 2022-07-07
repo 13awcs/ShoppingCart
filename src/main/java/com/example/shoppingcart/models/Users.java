@@ -1,11 +1,13 @@
 package com.example.shoppingcart.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.List;
 
 @Entity
 @Data
@@ -17,7 +19,6 @@ public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-
     private String phone;
     private String avatar;
     private Integer active;
@@ -32,4 +33,11 @@ public class Users {
     @Column(name = "updated_at",columnDefinition="Timestamp" )
     private Timestamp updated_at;
 
+    @JsonBackReference
+    @OneToMany(mappedBy = "users",cascade = CascadeType.ALL,fetch = FetchType.LAZY,orphanRemoval = true)
+    private List<Orders> orders;
+
+    @JsonBackReference
+    @OneToMany(mappedBy = "users",cascade = CascadeType.ALL,fetch = FetchType.LAZY,orphanRemoval = true)
+    private List<Transactions> transactions;
 }

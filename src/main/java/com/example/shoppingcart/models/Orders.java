@@ -18,12 +18,17 @@ public class Orders {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-
-    private Integer or_transaction_id;
-    private Integer pr_product_id;
-    private Integer or_user_id;
     private Integer or_qty;
     private Integer or_price;
+    @ManyToOne
+    @JoinColumn(name = "pr_product_id")
+    private Products products;
+    @ManyToOne
+    @JoinColumn(name = "or_user_id")
+    private Users users;
+    @ManyToOne
+    @JoinColumn(name = "or_transaction_id")
+    private Transactions transactions;
 
     @Column(name = "created_at",columnDefinition="Timestamp" )
     private Timestamp created_at;
