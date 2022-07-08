@@ -15,7 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "products")
-public class Products {
+public class ProductEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,16 +32,16 @@ public class Products {
     private Timestamp updated_at;
     @ManyToOne
     @JoinColumn(name = "pro_category_id")
-    private Categories categories;
+    private CategoryEntity categoryEntity;
     @ManyToOne
     @JoinColumn(name = "pro_author_id")
-    private Admins admins;
+    private AdminEntity adminEntity;
 
     @JsonBackReference
     @OneToMany(mappedBy = "im_product_id",cascade = CascadeType.ALL,fetch = FetchType.LAZY,orphanRemoval = true)
-    private List<Images> images;
+    private List<ImageEntity> images;
 
     @JsonBackReference
-    @OneToMany(mappedBy = "products",cascade = CascadeType.ALL,fetch = FetchType.LAZY,orphanRemoval = true)
-    private List<Orders> orders;
+    @OneToMany(mappedBy = "productEntity",cascade = CascadeType.ALL,fetch = FetchType.LAZY,orphanRemoval = true)
+    private List<OrderEntity> orders;
 }

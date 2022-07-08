@@ -13,31 +13,28 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "users")
-public class Users {
+@Table(name = "categories")
+public class CategoryEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-    private String phone;
-    private String avatar;
-    private Integer active;
-    private String password;
-    private String name;
-    private String email;
-    private String address;
+    private String c_name;
+    private String c_icon;
+    private String c_avatar;
+    private Integer c_active;
+    private Integer c_total_product;
+    @ManyToOne
+    @JoinColumn(name ="c_author_id")
+    private AdminEntity adminEntity;
 
     @Column(name = "created_at",columnDefinition="Timestamp" )
     private Timestamp created_at;
 
     @Column(name = "updated_at",columnDefinition="Timestamp" )
     private Timestamp updated_at;
-
     @JsonBackReference
-    @OneToMany(mappedBy = "users",cascade = CascadeType.ALL,fetch = FetchType.LAZY,orphanRemoval = true)
-    private List<Orders> orders;
+    @OneToMany(mappedBy = "categoryEntity",cascade = CascadeType.ALL,fetch = FetchType.LAZY,orphanRemoval = true)
+    private List<ProductEntity> products;
 
-    @JsonBackReference
-    @OneToMany(mappedBy = "users",cascade = CascadeType.ALL,fetch = FetchType.LAZY,orphanRemoval = true)
-    private List<Transactions> transactions;
 }

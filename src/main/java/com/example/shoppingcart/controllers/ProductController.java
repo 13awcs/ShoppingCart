@@ -1,18 +1,18 @@
 package com.example.shoppingcart.controllers;
 
-import com.example.shoppingcart.repositories.AdminsRepository;
+import com.example.shoppingcart.repositories.AdminRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class ProductControllers {
+public class ProductController {
     @Autowired
-    AdminsRepository adminsRepository;
+    AdminRepository adminRepository;
 
     @GetMapping ("delete")
     public String delete(){
-        adminsRepository.deleteById(1);
+        adminRepository.deleteById(1);
         return "xoa thanh cong";
     }
 }

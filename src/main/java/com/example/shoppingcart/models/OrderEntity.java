@@ -12,20 +12,27 @@ import java.sql.Timestamp;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "images")
-public class Images {
+@Table(name = "orders")
+public class OrderEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-    private String im_name;
+    private Integer or_qty;
+    private Integer or_price;
+    @ManyToOne
+    @JoinColumn(name = "pr_product_id")
+    private ProductEntity productEntity;
+    @ManyToOne
+    @JoinColumn(name = "or_user_id")
+    private UserEntity userEntity;
+    @ManyToOne
+    @JoinColumn(name = "or_transaction_id")
+    private TransactionEntity transactionEntity;
 
     @Column(name = "created_at",columnDefinition="Timestamp" )
     private Timestamp created_at;
 
     @Column(name = "updated_at",columnDefinition="Timestamp" )
     private Timestamp updated_at;
-    @ManyToOne
-    @JoinColumn(name = "im_product_id")
-    private Products im_product_id;
 }

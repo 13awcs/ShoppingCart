@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -13,29 +14,28 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "transactions")
-public class Transactions {
-
+@Table(name = "admins")
+public class AdminEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
-    private Integer tr_total;
-    private String tr_note;
-    private String address;
+    private Integer id;
+    private String name;
+    private String email;
     private String phone;
-    private Integer status;
+    private String avatar;
+    private Integer active;
+    private String password;
 
     @Column(name = "created_at",columnDefinition="Timestamp" )
     private Timestamp created_at;
 
     @Column(name = "updated_at",columnDefinition="Timestamp" )
     private Timestamp updated_at;
-
-    @ManyToOne
-    @JoinColumn(name = "tr_user_id")
-    private Users users;
-
     @JsonBackReference
-    @OneToMany(mappedBy = "transactions",cascade = CascadeType.ALL,fetch = FetchType.LAZY,orphanRemoval = true)
-    private List<Orders> orders;
+    @OneToMany(mappedBy = "adminEntity",cascade = CascadeType.ALL,fetch = FetchType.LAZY,orphanRemoval = true)
+    private List<CategoryEntity> categories;
+    @JsonBackReference
+    @OneToMany(mappedBy = "adminEntity",cascade = CascadeType.ALL,fetch = FetchType.LAZY,orphanRemoval = true)
+    private List<ProductEntity> products;
+
 }
