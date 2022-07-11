@@ -7,12 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class ProductController {
-    @Autowired
-    AdminRepository adminRepository;
 
-    @GetMapping ("delete")
-    public String delete(){
-        adminRepository.deleteById(1);
-        return "xoa thanh cong";
-    }
+
+
 }

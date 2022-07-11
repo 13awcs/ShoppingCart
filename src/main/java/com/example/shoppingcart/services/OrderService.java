@@ -1,11 +1,14 @@
 package com.example.shoppingcart.services;
 
-import com.example.shoppingcart.repositories.OrderRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.shoppingcart.dtos.reponseDTO.OrderDTO;
+
 import org.springframework.stereotype.Service;
 
-@Service
+import java.util.List;
+
+
 public interface OrderService   {
 
 
+    List<OrderDTO> findAll();
 }
