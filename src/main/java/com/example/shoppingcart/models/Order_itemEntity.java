@@ -12,7 +12,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "order_itemEntity")
+@Table(name = "order_item")
 @ToString
 public class Order_itemEntity {
 
@@ -21,19 +21,18 @@ public class Order_itemEntity {
     @ManyToOne()
     @JsonBackReference
     @MapsId("product_id")
-
     @JoinColumn(name = "product_id")
-    private ProductEntity productEntity;
+    private ProductEntity productEntity_item;
 
     @ManyToOne
     @JsonBackReference
     @MapsId("order_id")
     @JoinColumn(name = "order_id")
-    private OrderEntity orderEntity;
+    private OrderEntity orderEntity_item;
 
+    private Integer order_item_quantity;
 
-     private  Integer order_item_quantity ;
-     private  Float order_item_price ;
+    private Float order_item_price;
 
 
 }

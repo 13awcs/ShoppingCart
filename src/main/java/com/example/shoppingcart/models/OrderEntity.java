@@ -4,9 +4,12 @@ package com.example.shoppingcart.models;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.List;
 
 @Entity
 @Data
@@ -35,4 +38,10 @@ public class OrderEntity {
 
     @Column(name = "updated_at",columnDefinition="Timestamp" )
     private Timestamp updated_at;
+
+
+    @OneToMany(mappedBy = "orderEntity_item", fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
+    @Fetch(value = FetchMode.SUBSELECT)
+    private List<Order_itemEntity> order_itemEntity;
 }
