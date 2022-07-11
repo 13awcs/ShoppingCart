@@ -18,7 +18,7 @@ public class TransactionEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Long id;
     private Integer tr_total;
     private String tr_note;
     private String address;

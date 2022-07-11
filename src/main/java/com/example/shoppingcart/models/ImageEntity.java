@@ -17,7 +17,7 @@ public class ImageEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private Long id;
     private String im_name;
 
     @Column(name = "created_at",columnDefinition="Timestamp" )
