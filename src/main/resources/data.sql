@@ -36,3 +36,26 @@ insert into images(id,im_product_id,im_name) values (5,3,'');
 insert into images(id,im_product_id,im_name) values (6,1,'');
 insert into images(id,im_product_id,im_name) values (7,3,'');
 
+insert into users(id,phone,avatar,active,password,name,email,address) values (1,0326128475,'',0,'abcd','ha','doanha18121999@gmail.com','');
+insert into users(id,phone,avatar,active,password,name,email,address) values (2,0326128471,'',0,'abcd','bac','doanha18121999@gmail.com','');
+insert into users(id,phone,avatar,active,password,name,email,address) values (3,0326128472,'',0,'abcd','toan','doanha18121999@gmail.com','');
+insert into users(id,phone,avatar,active,password,name,email,address) values (4,0326128473,'',0,'abcd','nam','doanha18121999@gmail.com','');
+insert into users(id,phone,avatar,active,password,name,email,address) values (5,0326128474,'',0,'abcd','thanh','doanha18121999@gmail.com','');
+insert into users(id,phone,avatar,active,password,name,email,address) values (6,0326128476,'',0,'abcd','hung','doanha18121999@gmail.com','');
+insert into users(id,phone,avatar,active,password,name,email,address) values (7,0326128477,'',0,'abcd','ha','doanha18121999@gmail.com','');
+
+insert into transactions(id,tr_user_id,tr_total,tr_note,address,phone) values (1,1,2,'','','0326128475');
+insert into transactions(id,tr_user_id,tr_total,tr_note,address,phone) values (2,2,1,'','','0326128475');
+insert into transactions(id,tr_user_id,tr_total,tr_note,address,phone) values (3,3,2,'','','0326128475');
+insert into transactions(id,tr_user_id,tr_total,tr_note,address,phone) values (4,4,3,'','','0326128475');
+insert into transactions(id,tr_user_id,tr_total,tr_note,address,phone) values (5,5,4,'','','0326128475');
+insert into transactions(id,tr_user_id,tr_total,tr_note,address,phone) values (6,6,1,'','','0326128475');
+insert into transactions(id,tr_user_id,tr_total,tr_note,address,phone) values (7,7,6,'','','0326128475');
+
+insert into orders(id,or_transaction_id,pr_product_id,or_user_id,or_quantity,or_price) values (1,1,1,1,5,150000);
+insert into orders(id,or_transaction_id,pr_product_id,or_user_id,or_quantity,or_price) values (2,2,1,1,10,150000);
+insert into orders(id,or_transaction_id,pr_product_id,or_user_id,or_quantity,or_price) values (3,3,2,2,20,150000);
+insert into orders(id,or_transaction_id,pr_product_id,or_user_id,or_quantity,or_price) values (4,4,2,3,30,150000);
+insert into orders(id,or_transaction_id,pr_product_id,or_user_id,or_quantity,or_price) values (5,5,3,4,14,150000);
+insert into orders(id,or_transaction_id,pr_product_id,or_user_id,or_quantity,or_price) values (6,6,4,5,22,150000);
+insert into order_item(order_id,product_id,order_item_quantity,order_item_price) values (1,1,13,2000)
