@@ -1,6 +1,7 @@
 package com.example.shoppingcart.models;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,7 +28,9 @@ public class OrderEntity {
     @JoinColumn(name = "pr_product_id")
     private ProductEntity productEntity;
     @OneToOne
-    @JoinColumn(name = "or_user_id")
+
+    @JoinColumn(name = "or_user_id", referencedColumnName = "id")
+
     private UserEntity userEntity;
     @ManyToOne
     @JoinColumn(name = "or_transaction_id")

@@ -20,9 +20,8 @@ public class OrderServiceImpl implements OrderService {
   private mapper mapper ;
     @Override
     public List<OrderDTO> findAll() {
-        List<OrderEntity> orderEntity = StreamSupport
-                .stream(orderRepository.findAll().spliterator(), false)
-                .collect(Collectors.toList());
+        List<OrderEntity> orderEntity = orderRepository.findAll() ;
+
         return mapper.ListOrderEntityConvertListOrderDTO(orderEntity);
 
 

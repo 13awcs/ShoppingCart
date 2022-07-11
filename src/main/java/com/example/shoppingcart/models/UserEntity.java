@@ -37,9 +37,9 @@ public class UserEntity {
     @NotEmpty(message = "This is required field.")
     private Timestamp updated_at;
 
-    @JsonBackReference
-    @OneToOne(mappedBy = "userEntity",cascade = CascadeType.ALL,fetch = FetchType.LAZY,orphanRemoval = true)
-    private OrderEntity orders;
+//    @JsonBackReference
+    @OneToOne(mappedBy = "userEntity", cascade = CascadeType.ALL, orphanRemoval = true)
+    private OrderEntity orderEntity;
 
     @JsonBackReference
     @OneToMany(mappedBy = "userEntity",cascade = CascadeType.ALL,fetch = FetchType.LAZY,orphanRemoval = true)
