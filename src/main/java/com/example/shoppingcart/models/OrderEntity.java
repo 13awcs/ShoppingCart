@@ -23,7 +23,7 @@ public class OrderEntity {
     @ManyToOne
     @JoinColumn(name = "pr_product_id")
     private ProductEntity productEntity;
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "or_user_id")
     private UserEntity userEntity;
     @ManyToOne

@@ -32,7 +32,8 @@ public class Order_itemEntity {
     private OrderEntity orderEntity;
 
 
-     private  Integer order_itemquantity ;
+     private  Integer order_item_quantity ;
+     private  Float order_item_price ;
 
 
 }

@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -31,11 +33,13 @@ public class UserEntity {
     private Timestamp created_at;
 
     @Column(name = "updated_at",columnDefinition="Timestamp" )
+
+    @NotEmpty(message = "This is required field.")
     private Timestamp updated_at;
 
     @JsonBackReference
-    @OneToMany(mappedBy = "userEntity",cascade = CascadeType.ALL,fetch = FetchType.LAZY,orphanRemoval = true)
-    private List<OrderEntity> orders;
+    @OneToOne(mappedBy = "userEntity",cascade = CascadeType.ALL,fetch = FetchType.LAZY,orphanRemoval = true)
+    private OrderEntity orders;
 
     @JsonBackReference
     @OneToMany(mappedBy = "userEntity",cascade = CascadeType.ALL,fetch = FetchType.LAZY,orphanRemoval = true)
