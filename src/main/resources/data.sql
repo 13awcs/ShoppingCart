@@ -35,3 +35,4 @@ insert into images(id,im_product_id,im_name) values (4,2,'');
 insert into images(id,im_product_id,im_name) values (5,3,'');
 insert into images(id,im_product_id,im_name) values (6,1,'');
 insert into images(id,im_product_id,im_name) values (7,3,'');
+
