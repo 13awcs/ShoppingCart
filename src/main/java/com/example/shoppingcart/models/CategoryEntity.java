@@ -18,7 +18,7 @@ public class CategoryEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private Long id;
     private String c_name;
     private String c_icon;
     private String c_avatar;

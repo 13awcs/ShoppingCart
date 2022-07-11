@@ -17,8 +17,8 @@ public class OrderEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
-    private Integer or_qty;
+    private Long id;
+    private Integer or_quantity;
     private Integer or_price;
     @ManyToOne
     @JoinColumn(name = "pr_product_id")
