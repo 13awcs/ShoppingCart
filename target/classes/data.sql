@@ -16,16 +16,16 @@ values (4,'Giay','','',0,150,3);
 insert into categories(id,c_name,c_icon,c_avatar,c_active,c_total_product,c_author_id)
 values (5,'Giay','','',0,150,6);
 
-INSERT INTO PRODUCTS(id,pro_name,pro_category_id,pro_price,pro_author_id,active,pro_number,pro_description,pro_avatar)
-    values(1,'Giay the thao',1,150000,1,1,150,'','');
-INSERT INTO PRODUCTS(id,pro_name,pro_category_id,pro_price,pro_author_id,active,pro_number,pro_description,pro_avatar)
-values(2,'Giay da bong',4,150000,3,2,150,'','');
-INSERT INTO PRODUCTS(id,pro_name,pro_category_id,pro_price,pro_author_id,active,pro_number,pro_description,pro_avatar)
-values(3,'Giay trang',3,150000,3,1,150,'','');
-INSERT INTO PRODUCTS(id,pro_name,pro_category_id,pro_price,pro_author_id,active,pro_number,pro_description,pro_avatar)
-values(4,'Giay trang',3,150000,3,1,150,'','');
-INSERT INTO PRODUCTS(id,pro_name,pro_category_id,pro_price,pro_author_id,active,pro_number,pro_description,pro_avatar)
-values(5,'Giay trang',3,150000,3,1,150,'','');
+INSERT INTO PRODUCTS(id,pro_name,pro_category_id,pro_price,pro_author_id,active,pro_number,pro_description,pro_avatar,created_at,updated_at)
+values(1,'Giay the thao',1,150000,1,1,150,'','',current_date ,current_date );
+INSERT INTO PRODUCTS(id,pro_name,pro_category_id,pro_price,pro_author_id,active,pro_number,pro_description,pro_avatar,created_at,updated_at)
+values(2,'Giay da bong',4,150000,3,2,150,'','',current_date ,current_date );
+INSERT INTO PRODUCTS(id,pro_name,pro_category_id,pro_price,pro_author_id,active,pro_number,pro_description,pro_avatar,created_at,updated_at)
+values(3,'Giay trang',3,150000,3,1,150,'','',current_date ,current_date );
+INSERT INTO PRODUCTS(id,pro_name,pro_category_id,pro_price,pro_author_id,active,pro_number,pro_description,pro_avatar,created_at,updated_at)
+values(4,'Giay trang',3,150000,3,1,150,'','',current_date ,current_date );
+INSERT INTO PRODUCTS(id,pro_name,pro_category_id,pro_price,pro_author_id,active,pro_number,pro_description,pro_avatar,created_at,updated_at)
+values(5,'Giay trang',3,150000,3,1,150,'','',current_timestamp ,current_date );
 
 
 insert into images(id,im_product_id,im_name) values (1,1,'');
@@ -53,9 +53,16 @@ insert into transactions(id,tr_user_id,tr_total,tr_note,address,phone) values (6
 insert into transactions(id,tr_user_id,tr_total,tr_note,address,phone) values (7,7,6,'','','0326128475');
 
 insert into orders(id,or_transaction_id,pr_product_id,or_user_id,or_quantity,or_price) values (1,1,1,1,5,150000);
-insert into orders(id,or_transaction_id,pr_product_id,or_user_id,or_quantity,or_price) values (2,2,1,1,10,150000);
+insert into orders(id,or_transaction_id,pr_product_id,or_user_id,or_quantity,or_price) values (2,2,1,6,10,150000);
 insert into orders(id,or_transaction_id,pr_product_id,or_user_id,or_quantity,or_price) values (3,3,2,2,20,150000);
 insert into orders(id,or_transaction_id,pr_product_id,or_user_id,or_quantity,or_price) values (4,4,2,3,30,150000);
 insert into orders(id,or_transaction_id,pr_product_id,or_user_id,or_quantity,or_price) values (5,5,3,4,14,150000);
 insert into orders(id,or_transaction_id,pr_product_id,or_user_id,or_quantity,or_price) values (6,6,4,5,22,150000);
-insert into order_item(order_id,product_id,order_item_quantity,order_item_price) values (1,1,13,2000)
+
+insert into order_item(order_id,product_id,order_item_quantity,order_item_price) values (1,1,13,2000);
+insert into order_item(order_id,product_id,order_item_quantity,order_item_price) values (2,2,12,2000);
+insert into order_item(order_id,product_id,order_item_quantity,order_item_price) values (2,1,10,2000);
+insert into order_item(order_id,product_id,order_item_quantity,order_item_price) values (3,2,9,2000);
+insert into order_item(order_id,product_id,order_item_quantity,order_item_price) values (3,3,15,2000);
+-- insert into order_item(order_id,product_id,order_item_quantity,order_item_price) values (3,3,15,2000);
+-- insert into order_item(order_id,product_id,order_item_quantity,order_item_price) values (4,1,5,2000);

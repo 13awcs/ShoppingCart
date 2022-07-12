@@ -13,7 +13,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Entity
 @Table(name = "order_item")
-@ToString
+
 public class Order_itemEntity {
 
     @EmbeddedId
@@ -34,5 +34,13 @@ public class Order_itemEntity {
 
     private Float order_item_price;
 
-
+    @Override
+    public String toString() {
+        return "Order_itemEntity{" +
+                "productEntity_item=" + productEntity_item +
+                ", orderEntity_item=" + orderEntity_item +
+                ", order_item_quantity=" + order_item_quantity +
+                ", order_item_price=" + order_item_price +
+                '}';
+    }
 }

@@ -2,14 +2,21 @@ package com.example.shoppingcart.models;
 
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import jdk.jfr.Timestamp;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
+import java.awt.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
 
@@ -29,13 +36,21 @@ public class ProductEntity {
     private Integer pro_number;
     private String pro_description;
     private String pro_avatar;
-    @Column(name = "created_at", columnDefinition = "Timestamp")
-    private Timestamp created_at;
-    @Column(name = "updated_at", columnDefinition = "Timestamp")
-    private Timestamp updated_at;
+
+    @JsonFormat(pattern = "dd-mmm-yyyy hh:mm:ss")
+    @Column(name = "created_at")
+    @CreationTimestamp
+    private LocalDateTime created_at;
+
+    @JsonFormat(pattern = "dd-mmm-yyyy hh:mm:ss")
+    @Column(name = "updated_at")
+    @UpdateTimestamp
+    private LocalDateTime updated_at;
+
     @ManyToOne
     @JoinColumn(name = "pro_category_id")
     private CategoryEntity categoryEntity;
+
     @ManyToOne
     @JoinColumn(name = "pro_author_id")
     private AdminEntity adminEntity;

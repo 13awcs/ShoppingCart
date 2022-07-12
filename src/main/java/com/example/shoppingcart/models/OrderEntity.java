@@ -4,11 +4,14 @@ package com.example.shoppingcart.models;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -33,11 +36,12 @@ public class OrderEntity {
     @JoinColumn(name = "or_transaction_id")
     private TransactionEntity transactionEntity;
 
-    @Column(name = "created_at",columnDefinition="Timestamp" )
-    private Timestamp created_at;
-
-    @Column(name = "updated_at",columnDefinition="Timestamp" )
-    private Timestamp updated_at;
+    @Column(name = "created_at")
+    @CreationTimestamp
+    private LocalDateTime created_at;
+    @Column(name = "updated_at")
+    @UpdateTimestamp
+    private LocalDateTime updated_at;
 
 
     @OneToMany(mappedBy = "orderEntity_item", fetch = FetchType.LAZY,
