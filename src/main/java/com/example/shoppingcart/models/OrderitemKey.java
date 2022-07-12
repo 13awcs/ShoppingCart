@@ -15,13 +15,12 @@ import java.io.Serializable;
 @AllArgsConstructor
 @ToString
 
-public class Order_itemKey implements Serializable {
+public class OrderitemKey implements Serializable {
     @Column(name = "order_id")
-    Long order_id;
+    Long orderid;
 
     @Column(name = "product_id")
-    Long product_id;
-
+    Long productid;
 
 
 }

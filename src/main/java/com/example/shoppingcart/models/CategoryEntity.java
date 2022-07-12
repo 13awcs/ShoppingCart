@@ -17,24 +17,32 @@ import java.util.List;
 public class CategoryEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JoinColumn(name = "id")
     private Long id;
-    private String c_name;
-    private String c_icon;
-    private String c_avatar;
-    private Integer c_active;
-    private Integer c_total_product;
+    @JoinColumn(name = "c_name")
+    private String name;
+    @JoinColumn(name = "c_icon")
+    private String icon;
+    @JoinColumn(name = "c_avatar")
+    private String avatar;
+    @JoinColumn(name = "c_active")
+
+    private Integer active;
+    @JoinColumn(name = "c_total_product")
+
+    private Integer totalproduct;
     @ManyToOne
-    @JoinColumn(name ="c_author_id")
+    @JoinColumn(name = "c_author_id")
     private AdminEntity adminEntity;
 
-    @Column(name = "created_at",columnDefinition="Timestamp" )
-    private Timestamp created_at;
+    @Column(name = "created_at", columnDefinition = "Timestamp")
+    private Timestamp createdat;
 
-    @Column(name = "updated_at",columnDefinition="Timestamp" )
-    private Timestamp updated_at;
+    @Column(name = "updated_at", columnDefinition = "Timestamp")
+    private Timestamp updatedat;
     @JsonBackReference
-    @OneToMany(mappedBy = "categoryEntity",cascade = CascadeType.ALL,fetch = FetchType.LAZY,orphanRemoval = true)
+    @OneToMany(mappedBy = "categoryEntity", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     private List<ProductEntity> products;
 
 }

@@ -2,7 +2,6 @@ package com.example.shoppingcart.dtos;
 
 import com.example.shoppingcart.dtos.reponseDTO.OrderDTO;
 import com.example.shoppingcart.models.OrderEntity;
-import com.example.shoppingcart.models.Order_itemEntity;
 
 import java.util.ArrayList;
 import java.util.List;

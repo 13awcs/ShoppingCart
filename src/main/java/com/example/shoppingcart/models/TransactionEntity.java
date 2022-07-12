@@ -17,7 +17,7 @@ import java.util.List;
 public class TransactionEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Integer tr_total;
     private String tr_note;

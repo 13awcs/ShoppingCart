@@ -14,25 +14,27 @@ import javax.persistence.*;
 @Entity
 @Table(name = "order_item")
 @ToString
-public class Order_itemEntity {
+public class OrderitemEntity {
 
     @EmbeddedId
-    private Order_itemKey id;
+    private OrderitemKey id;
     @ManyToOne()
     @JsonBackReference
-    @MapsId("product_id")
+    @MapsId("productid")
     @JoinColumn(name = "product_id")
-    private ProductEntity productEntity_item;
+    private ProductEntity productEntityitem;
 
     @ManyToOne
     @JsonBackReference
-    @MapsId("order_id")
+    @MapsId("orderid")
     @JoinColumn(name = "order_id")
-    private OrderEntity orderEntity_item;
+    private OrderEntity orderEntityitem;
+    @JoinColumn(name = "order_item_price")
 
-    private Integer order_item_quantity;
+    private Integer orderitemquantity;
+    @JoinColumn(name = "order_item_quantity")
 
-    private Float order_item_price;
+    private Float orderitemprice;
 
 
 }

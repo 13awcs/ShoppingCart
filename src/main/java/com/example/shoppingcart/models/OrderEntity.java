@@ -1,10 +1,10 @@
 package com.example.shoppingcart.models;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -17,10 +17,11 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "orders")
+@ToString
 public class OrderEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Integer or_quantity;
     private Integer or_price;
@@ -37,14 +38,14 @@ public class OrderEntity {
     private TransactionEntity transactionEntity;
 
     @Column(name = "created_at",columnDefinition="Timestamp" )
-    private Timestamp created_at;
+    private Timestamp createdat;
 
     @Column(name = "updated_at",columnDefinition="Timestamp" )
-    private Timestamp updated_at;
+    private Timestamp updatedat;
 
 
-    @OneToMany(mappedBy = "orderEntity_item", fetch = FetchType.LAZY,
+    @OneToMany(mappedBy = "productEntityitem", fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
     @Fetch(value = FetchMode.SUBSELECT)
-    private List<Order_itemEntity> order_itemEntity;
+    private List<OrderitemEntity> orderitemEntity;
 }

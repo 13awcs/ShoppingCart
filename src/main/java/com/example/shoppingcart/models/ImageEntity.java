@@ -16,16 +16,17 @@ import java.sql.Timestamp;
 public class ImageEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JoinColumn(name = "id")
     private Long id;
-    private String im_name;
-
+    @JoinColumn(name = "im_name")
+    private String imname;
     @Column(name = "created_at",columnDefinition="Timestamp" )
-    private Timestamp created_at;
+    private Timestamp createdat;
 
     @Column(name = "updated_at",columnDefinition="Timestamp" )
-    private Timestamp updated_at;
+    private Timestamp updatedat;
     @ManyToOne
     @JoinColumn(name = "im_product_id")
-    private ProductEntity im_product_id;
+    private ProductEntity improductid;
 }

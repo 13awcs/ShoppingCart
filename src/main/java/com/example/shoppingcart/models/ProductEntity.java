@@ -11,7 +11,6 @@ import org.hibernate.annotations.FetchMode;
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Data
@@ -41,16 +40,16 @@ public class ProductEntity {
     private AdminEntity adminEntity;
 
     @JsonBackReference
-    @OneToMany(mappedBy = "im_product_id", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    @OneToMany(mappedBy = "improductid", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     private List<ImageEntity> images;
 
     @JsonBackReference
     @OneToMany(mappedBy = "productEntity", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     private List<OrderEntity> orders;
 
-    @OneToMany(mappedBy = "productEntity_item", fetch = FetchType.LAZY,
+    @OneToMany(mappedBy = "productEntityitem", fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
     @Fetch(value = FetchMode.SUBSELECT)
-    private List<Order_itemEntity> order_itemEntity;
+    private List<OrderitemEntity> orderitemEntity;
 
 }

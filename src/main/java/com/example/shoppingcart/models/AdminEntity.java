@@ -17,20 +17,28 @@ import java.util.List;
 @Table(name = "admins")
 public class AdminEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JoinColumn(name = "id")
     private Long id;
+    @JoinColumn(name = "ad_name")
     private String name;
+    @JoinColumn(name = "ad_email")
     private String email;
+    @JoinColumn(name = "ad_phone")
     private String phone;
+    @JoinColumn(name = "ad_avatar")
     private String avatar;
+    @JoinColumn(name = "ad_active")
     private Integer active;
+    @JoinColumn(name = "ad_phone")
     private String password;
+    @JoinColumn(name = "ad_password")
 
     @Column(name = "created_at",columnDefinition="Timestamp" )
-    private Timestamp created_at;
+    private Timestamp createdat;
 
     @Column(name = "updated_at",columnDefinition="Timestamp" )
-    private Timestamp updated_at;
+    private Timestamp updatedat;
     @JsonBackReference
     @OneToMany(mappedBy = "adminEntity",cascade = CascadeType.ALL,fetch = FetchType.LAZY,orphanRemoval = true)
     private List<CategoryEntity> categories;
