@@ -2,8 +2,10 @@ package com.example.shoppingcart.dtos;
 
 import com.example.shoppingcart.dtos.responseDto.CategoryResponseDto;
 import com.example.shoppingcart.dtos.responseDto.ProductResponseDto;
+import com.example.shoppingcart.dtos.responseDto.UserResponseDto;
 import com.example.shoppingcart.models.CategoryEntity;
 import com.example.shoppingcart.models.ProductEntity;
+import com.example.shoppingcart.models.UserEntity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,5 +44,17 @@ public class Mapper {
             productResponseDtos.add(productToProductResponseDto(productEntity));
         }
         return productResponseDtos;
+    }
+
+    public static UserResponseDto userToUserResponseDto(UserEntity userEntity){
+        UserResponseDto userResponseDto = new UserResponseDto();
+        userResponseDto.setId(userEntity.getId());
+        userResponseDto.setPhone(userEntity.getPhone());
+        userResponseDto.setAvatar(userEntity.getAvatar());
+        userResponseDto.setName(userEntity.getName());
+        userResponseDto.setEmail(userEntity.getEmail());
+        userResponseDto.setAddress(userEntity.getAddress());
+        return userResponseDto;
+
     }
 }

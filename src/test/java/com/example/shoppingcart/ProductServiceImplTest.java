@@ -24,13 +24,13 @@ public class ProductServiceImplTest {
 
     @Autowired
     ProductService productService;
-
-    @Test
-    public void getProductsByCategoryId(){
-        ProductResponseDto product = new ProductResponseDto(3L,"Giay trang",3L,"",150,150000,3L,LocalDate.now());
-        List<ProductResponseDto> products = productService.getProductsByCategoryId(3L);
-        assertEquals(product,products.get(0));
-
-    }
+//
+//    @Test
+//    public void getProductsByCategoryId(){
+//        ProductResponseDto product = new ProductResponseDto(3L,"Giay trang",3L,"",150,150000,3L,LocalDate.now());
+//        List<ProductResponseDto> products = productService.getProductsByCategoryId(3L);
+//        assertEquals(product,products.get(0));
+//
+//    }
 
 }
