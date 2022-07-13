@@ -12,7 +12,7 @@ import lombok.ToString;
 public class ResponseObject {
 
 
-    private  String massager ;
+    private  String message ;
     private String fieldName ;
     private String code ;
     private  Object data ;

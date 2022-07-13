@@ -3,7 +3,6 @@ package com.example.shoppingcart.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import jdk.jfr.Timestamp;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,14 +10,12 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.UpdateTimestamp;
-import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
-import java.awt.*;
+import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Data
@@ -40,12 +37,12 @@ public class ProductEntity {
     @JsonFormat(pattern = "dd-mmm-yyyy hh:mm:ss")
     @Column(name = "created_at")
     @CreationTimestamp
-    private LocalDateTime created_at;
+    private Timestamp createdat;
 
     @JsonFormat(pattern = "dd-mmm-yyyy hh:mm:ss")
     @Column(name = "updated_at")
     @UpdateTimestamp
-    private LocalDateTime updated_at;
+    private Timestamp updated_at;
 
     @ManyToOne
     @JoinColumn(name = "pro_category_id")
@@ -66,6 +63,6 @@ public class ProductEntity {
     @OneToMany(mappedBy = "productEntity_item", fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
     @Fetch(value = FetchMode.SUBSELECT)
-    private List<Order_itemEntity> order_itemEntity;
+    private List<OrderItemEntity> order_itemEntity;
 
 }

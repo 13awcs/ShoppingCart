@@ -10,7 +10,6 @@ import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -22,7 +21,7 @@ import java.util.List;
 public class OrderEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Integer or_quantity;
     private Integer or_price;
@@ -47,5 +46,5 @@ public class OrderEntity {
     @OneToMany(mappedBy = "orderEntity_item", fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
     @Fetch(value = FetchMode.SUBSELECT)
-    private List<Order_itemEntity> order_itemEntity;
+    private List<OrderItemEntity> order_itemEntity;
 }

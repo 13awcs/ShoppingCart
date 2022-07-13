@@ -7,6 +7,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="final_project_shopping_cart" />
         <module name="ShoppingCart-main" />
         <module name="ShoppingCart" />
         <module name="shoppingcart" />
@@ -17,6 +18,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="ShoppingCart" options="-parameters" />
       <module name="ShoppingCart-main" options="-parameters" />
+      <module name="final_project_shopping_cart" options="-parameters" />
       <module name="shoppingcart" options="-parameters" />
     </option>
   </component>

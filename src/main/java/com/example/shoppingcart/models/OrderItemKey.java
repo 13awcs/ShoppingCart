@@ -15,7 +15,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @ToString
 
-public class Order_itemKey implements Serializable {
+public class OrderItemKey implements Serializable {
     @Column(name = "order_id")
     Long order_id;
 

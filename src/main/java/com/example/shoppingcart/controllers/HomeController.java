@@ -19,13 +19,14 @@ public class HomeController {
     @Autowired
     OrderItemService orderItemService;
 
-    @GetMapping("orderitem/{topNumber}")
-    public ResponseEntity<ResponseObject> findTop(@PathVariable int topNumber){
-        log.info("test"+topNumber) ;
-        orderItemService.findTop(topNumber) ;
+    @GetMapping("orderitem")
+    public ResponseEntity<ResponseObject> getAll(){
+        //log.info("test"+topNumber) ;
+        //orderItemService.findTop(topNumber) ;
+        //orderItemService.getAll();
 
-        return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).body(new ResponseObject
-                ("successful", "insert successful", "insert successful " ,orderItemService.findTop(topNumber)));
+        return ResponseEntity.status(HttpStatus.CREATED).body(new ResponseObject
+                ("successful", "insert successful", "insert successful " ,orderItemService.getAll()));
 
     }
 }

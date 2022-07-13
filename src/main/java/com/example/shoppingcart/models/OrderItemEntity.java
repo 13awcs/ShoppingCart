@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 import javax.persistence.*;
 
@@ -14,10 +13,10 @@ import javax.persistence.*;
 @Entity
 @Table(name = "order_item")
 
-public class Order_itemEntity {
+public class OrderItemEntity {
 
     @EmbeddedId
-    private Order_itemKey id;
+    private OrderItemKey id;
     @ManyToOne()
     @JsonBackReference
     @MapsId("product_id")
