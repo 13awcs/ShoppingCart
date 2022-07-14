@@ -6,8 +6,6 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import java.sql.Timestamp;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @Data
 @AllArgsConstructor
@@ -19,6 +17,6 @@ public class ProductResponseDto {
     private String avatar;
     private Integer number;
     private Integer price;
-    private Long author_id;
-    private Timestamp created_at;
+    private Long authorId;
+    private Timestamp createAt;
 }

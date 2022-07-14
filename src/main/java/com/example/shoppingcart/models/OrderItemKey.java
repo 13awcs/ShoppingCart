@@ -17,10 +17,10 @@ import java.io.Serializable;
 
 public class OrderItemKey implements Serializable {
     @Column(name = "order_id")
-    Long order_id;
+    Long orderId;
 
     @Column(name = "product_id")
-    Long product_id;
+    Long productId;
 
 
 

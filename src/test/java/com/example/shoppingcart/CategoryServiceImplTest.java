@@ -10,16 +10,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
 public class CategoryServiceImplTest {
-
     @Autowired
     CategoryService categoryService;
-
-
     @Test
     public void getCategoriesTest(){
         CategoryResponseDto categoryResponseDto = new CategoryResponseDto(1L,"Giay");
         List<CategoryResponseDto> categoryEntities = categoryService.getCategories();
         assertEquals(categoryResponseDto,categoryEntities.get(0));
-
     }
 }

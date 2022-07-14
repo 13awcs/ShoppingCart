@@ -12,26 +12,12 @@ import java.util.List;
 @Service
 public class OrderItemServiceImpl implements OrderItemService {
     @Autowired
-    OrderItemRepository order_itemRepository;
-
-    public OrderItemServiceImpl(OrderItemRepository order_itemRepository) {
-        this.order_itemRepository = order_itemRepository;
+    OrderItemRepository orderItemRepository;
+    public OrderItemServiceImpl(OrderItemRepository orderItemRepository) {
+        this.orderItemRepository = orderItemRepository;
     }
-
-//    @Override
-//    //@Query(value = "SELECT TOP ?est topNumber o.product_id,SUM(o.productEntity_item) FROM order_item o GROUP BY o.product_id ORDER BY SUM(order_item_quantity) DESC", nativeQuery = true)
-//    public List<OrderItemEntity> findTop(int topNumber) {
-        //return order_itemRepository.getAll();
-//        log.info("topNumber"+topNumber) ;
-//        Object a = order_itemRepository.findTop(3);
-//        log.info("test11"+a) ;
-//        return order_itemRepository.findTop(topNumber);
-
-
-    //}
-
     @Override
     public List<OrderItemEntity> getAll() {
-        return order_itemRepository.getAll();
+        return orderItemRepository.getAll();
     }
 }

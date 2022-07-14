@@ -23,11 +23,13 @@ public class OrderEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Integer or_quantity;
-    private Integer or_price;
-    @ManyToOne
-    @JoinColumn(name = "pr_product_id")
-    private ProductEntity productEntity;
+
+    @Column(name = "or_quantity")
+    private Integer quantity;
+
+    @Column(name = "or_price")
+    private Integer price;
+
     @OneToOne
     @JoinColumn(name = "or_user_id")
     private UserEntity userEntity;
@@ -37,14 +39,14 @@ public class OrderEntity {
 
     @Column(name = "created_at")
     @CreationTimestamp
-    private LocalDateTime created_at;
+    private LocalDateTime createdAt;
     @Column(name = "updated_at")
     @UpdateTimestamp
-    private LocalDateTime updated_at;
+    private LocalDateTime updatedAt;
 
 
-    @OneToMany(mappedBy = "orderEntity_item", fetch = FetchType.LAZY,
+    @OneToMany(mappedBy = "orderEntityItem", fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
     @Fetch(value = FetchMode.SUBSELECT)
-    private List<OrderItemEntity> order_itemEntity;
+    private List<OrderItemEntity> orderItemEntities;
 }

@@ -20,26 +20,38 @@ import java.util.List;
 @Table(name = "admins")
 public class AdminEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "ad_name")
     private String name;
+
+    @Column(name = "ad_email")
     private String email;
+
+    @Column(name = "ad_phone")
     private String phone;
+
+    @Column(name = "ad_avatar")
     private String avatar;
+
+    @Column(name = "ad_active")
     private Integer active;
+
+    @Column(name = "ad_password")
     private String password;
 
     @Column(name = "created_at")
     @CreationTimestamp
-    private LocalDateTime created_at;
+    private LocalDateTime createdAt;
     @Column(name = "updated_at")
     @UpdateTimestamp
-    private LocalDateTime updated_at;
+    private LocalDateTime updatedAt;
     @JsonBackReference
     @OneToMany(mappedBy = "adminEntity",cascade = CascadeType.ALL,fetch = FetchType.LAZY,orphanRemoval = true)
-    private List<CategoryEntity> categories;
+    private List<CategoryEntity> categoryEntities;
     @JsonBackReference
     @OneToMany(mappedBy = "adminEntity",cascade = CascadeType.ALL,fetch = FetchType.LAZY,orphanRemoval = true)
-    private List<ProductEntity> products;
+    private List<ProductEntity> productEntities;
 
 }

@@ -15,5 +15,7 @@ public interface ProductService {
     List<ProductResponseDto> getAllProduct();
     List<ProductResponseDto> searchProducts(String query);
     List<ProductResponseDto> getProductsByCategoryId(Long categoryId);
+    ProductResponseDto getProductById(Long productId);
+    List<ProductResponseDto> getProductByRangePrice(Long categoryId,Integer min,Integer max);
 
 }

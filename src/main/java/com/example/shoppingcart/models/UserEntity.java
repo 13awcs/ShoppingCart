@@ -22,22 +22,37 @@ import java.util.List;
 public class UserEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "u_phone")
     private String phone;
+
+    @Column(name = "u_avatar")
     private String avatar;
+
+    @Column(name = "u_active")
     private Integer active;
+
+    @Column(name = "u_password")
     private String password;
+
+    @Column(name = "u_name")
     private String name;
+
+    @Column(name = "u_email")
     private String email;
+
+    @Column(name = "u_address")
     private String address;
 
     @Column(name = "created_at")
     @CreationTimestamp
-    private LocalDateTime created_at;
+    private LocalDateTime createAt;
+
     @Column(name = "updated_at")
     @UpdateTimestamp
-    private LocalDateTime updated_at;
+    private LocalDateTime updateAt;
 
     @JsonBackReference
     @OneToOne(mappedBy = "userEntity",cascade = CascadeType.ALL,fetch = FetchType.LAZY,orphanRemoval = true)

@@ -19,17 +19,19 @@ import java.time.LocalDateTime;
 public class ImageEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String im_name;
+
+    @Column(name = "im_name")
+    private String name;
 
     @Column(name = "created_at")
     @CreationTimestamp
-    private LocalDateTime created_at;
+    private LocalDateTime createdAt;
     @Column(name = "updated_at")
     @UpdateTimestamp
-    private LocalDateTime updated_at;
+    private LocalDateTime updatedAt;
     @ManyToOne
     @JoinColumn(name = "im_product_id")
-    private ProductEntity im_product_id;
+    private ProductEntity imageProductId;
 }

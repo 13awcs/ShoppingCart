@@ -20,20 +20,30 @@ import java.util.List;
 public class TransactionEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Integer tr_total;
-    private String tr_note;
+
+    @Column(name = "tr_total")
+    private Integer total;
+
+    @Column(name = "tr_note")
+    private String note;
+
+    @Column(name = "tr_address")
     private String address;
+
+    @Column(name = "tr_phone")
     private String phone;
+
+    @Column(name = "tr_status")
     private Integer status;
 
     @Column(name = "created_at")
     @CreationTimestamp
-    private LocalDateTime created_at;
+    private LocalDateTime createAt;
     @Column(name = "updated_at")
     @UpdateTimestamp
-    private LocalDateTime updated_at;
+    private LocalDateTime updateAt;
 
     @ManyToOne
     @JoinColumn(name = "tr_user_id")

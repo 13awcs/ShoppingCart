@@ -5,7 +5,6 @@ import com.example.shoppingcart.models.CategoryEntity;
 import com.example.shoppingcart.models.ProductEntity;
 import com.example.shoppingcart.repositories.ProductRepository;
 import com.example.shoppingcart.services.ProductService;
-import com.example.shoppingcart.vo.ProductVo;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

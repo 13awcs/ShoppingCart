@@ -27,22 +27,34 @@ public class ProductEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String pro_name;
-    private Integer pro_price;
+
+    @Column(name = "pro_name")
+    private String name;
+
+    @Column(name = "pro_price")
+    private Integer price;
+
+    @Column(name = "pro_active")
     private Integer active;
-    private Integer pro_number;
-    private String pro_description;
-    private String pro_avatar;
+
+    @Column(name = "pro_number")
+    private Integer number;
+
+    @Column(name = "pro_description")
+    private String description;
+
+    @Column(name = "pro_avatar")
+    private String avatar;
 
     @JsonFormat(pattern = "dd-mmm-yyyy hh:mm:ss")
     @Column(name = "created_at")
     @CreationTimestamp
-    private Timestamp createdat;
+    private Timestamp createdAt;
 
     @JsonFormat(pattern = "dd-mmm-yyyy hh:mm:ss")
     @Column(name = "updated_at")
     @UpdateTimestamp
-    private Timestamp updated_at;
+    private Timestamp updatedAt;
 
     @ManyToOne
     @JoinColumn(name = "pro_category_id")
@@ -53,16 +65,12 @@ public class ProductEntity {
     private AdminEntity adminEntity;
 
     @JsonBackReference
-    @OneToMany(mappedBy = "im_product_id", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    @OneToMany(mappedBy = "imageProductId", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     private List<ImageEntity> images;
 
-    @JsonBackReference
-    @OneToMany(mappedBy = "productEntity", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
-    private List<OrderEntity> orders;
-
-    @OneToMany(mappedBy = "productEntity_item", fetch = FetchType.LAZY,
+    @OneToMany(mappedBy = "productEntityItem", fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
     @Fetch(value = FetchMode.SUBSELECT)
-    private List<OrderItemEntity> order_itemEntity;
+    private List<OrderItemEntity> orderItemEntities;
 
 }

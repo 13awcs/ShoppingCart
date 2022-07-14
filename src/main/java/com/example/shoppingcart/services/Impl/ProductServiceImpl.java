@@ -1,7 +1,6 @@
 package com.example.shoppingcart.services.Impl;
 
-import com.example.shoppingcart.dtos.Mapper;
-import com.example.shoppingcart.dtos.requestDto.CategoryRequestDto;
+import com.example.shoppingcart.dtos.mapper.ProductMapper;
 import com.example.shoppingcart.dtos.responseDto.ProductResponseDto;
 import com.example.shoppingcart.models.ProductEntity;
 import com.example.shoppingcart.repositories.CategoryRepository;
@@ -39,26 +38,38 @@ public class ProductServiceImpl implements ProductService {
                 break;
             }
         }
-        return Mapper.productsToProductResponseDto(listTopProducts);
+        return ProductMapper.productsToProductResponseDto(listTopProducts);
 
     }
 
     @Override
     public List<ProductResponseDto> getAllProduct() {
         List<ProductEntity> products = productRepository.findAll();
-        return Mapper.productsToProductResponseDto(products);
+        return ProductMapper.productsToProductResponseDto(products);
     }
 
     @Override
     public List<ProductResponseDto> searchProducts(String query) {
         List<ProductEntity> products = productRepository.searchProducts(query);
-        return Mapper.productsToProductResponseDto(products);
+        return ProductMapper.productsToProductResponseDto(products);
     }
 
     @Override
     public List<ProductResponseDto> getProductsByCategoryId(Long categoryId) {
         List<ProductEntity> products = productRepository.getProductsByCategoryId(categoryId);
-        return Mapper.productsToProductResponseDto(products);
+        return ProductMapper.productsToProductResponseDto(products);
+    }
+
+    @Override
+    public ProductResponseDto getProductById(Long productId) {
+        return ProductMapper.productToProductResponseDto(productRepository.findById(productId).orElseThrow(()->
+                new IllegalArgumentException("Khong tim thay userId : "+productId)));
+    }
+
+    @Override
+    public List<ProductResponseDto> getProductByRangePrice(Long categoryId,Integer min, Integer max) {
+        List<ProductEntity> products = productRepository.getProductByRangePrice(categoryId,min,max);
+        return ProductMapper.productsToProductResponseDto(products);
     }
 
 }

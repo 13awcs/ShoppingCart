@@ -19,27 +19,29 @@ public class OrderItemEntity {
     private OrderItemKey id;
     @ManyToOne()
     @JsonBackReference
-    @MapsId("product_id")
+    @MapsId("productId")
     @JoinColumn(name = "product_id")
-    private ProductEntity productEntity_item;
+    private ProductEntity productEntityItem;
 
     @ManyToOne
     @JsonBackReference
-    @MapsId("order_id")
+    @MapsId("orderId")
     @JoinColumn(name = "order_id")
-    private OrderEntity orderEntity_item;
+    private OrderEntity orderEntityItem;
 
-    private Integer order_item_quantity;
+    @Column(name = "order_item_quantity")
+    private Integer orderItemQuantity;
 
-    private Float order_item_price;
+    @Column(name = "order_item_price")
+    private Float orderItemPrice;
 
     @Override
     public String toString() {
         return "Order_itemEntity{" +
-                "productEntity_item=" + productEntity_item +
-                ", orderEntity_item=" + orderEntity_item +
-                ", order_item_quantity=" + order_item_quantity +
-                ", order_item_price=" + order_item_price +
+                "productEntity_item=" + productEntityItem +
+                ", orderEntity_item=" + orderEntityItem +
+                ", order_item_quantity=" + orderItemQuantity +
+                ", order_item_price=" + orderItemPrice +
                 '}';
     }
 }
