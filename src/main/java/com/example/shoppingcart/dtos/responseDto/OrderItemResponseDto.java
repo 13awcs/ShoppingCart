@@ -10,5 +10,7 @@ import lombok.ToString;
 @ToString
 public class OrderItemResponseDto {
     private Long productId;
-    private int quantity;
+    private Long orderId;
+    private Integer quantity;
+    private Integer productPrice;
 }

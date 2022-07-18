@@ -16,7 +16,8 @@ import javax.persistence.*;
 public class OrderItemEntity {
 
     @EmbeddedId
-    private OrderItemKey id;
+    private OrderItemKey id ;
+
     @ManyToOne()
     @JsonBackReference
     @MapsId("productId")
@@ -33,15 +34,22 @@ public class OrderItemEntity {
     private Integer orderItemQuantity;
 
     @Column(name = "order_item_price")
-    private Float orderItemPrice;
+    private Integer orderItemPrice;
+
+    public OrderItemEntity(ProductEntity productEntityItem, OrderEntity orderEntityItem, Integer orderItemQuantity, Integer orderItemPrice) {
+        this.productEntityItem = productEntityItem;
+        this.orderEntityItem = orderEntityItem;
+        this.orderItemQuantity = orderItemQuantity;
+        this.orderItemPrice = orderItemPrice;
+    }
+
 
     @Override
     public String toString() {
-        return "Order_itemEntity{" +
-                "productEntity_item=" + productEntityItem +
-                ", orderEntity_item=" + orderEntityItem +
-                ", order_item_quantity=" + orderItemQuantity +
-                ", order_item_price=" + orderItemPrice +
+        return "OrderItemEntity{" +
+                "id=" + id +
+                ", orderItemQuantity=" + orderItemQuantity +
+                ", orderItemPrice=" + orderItemPrice +
                 '}';
     }
 }

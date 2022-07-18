@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import java.sql.Timestamp;
+import java.time.LocalDate;
 
 @Data
 @AllArgsConstructor
@@ -18,5 +19,6 @@ public class ProductResponseDto {
     private Integer number;
     private Integer price;
     private Long authorId;
+    private Long categoryId;
     private Timestamp createAt;
 }

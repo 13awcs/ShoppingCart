@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -69,6 +70,18 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<ProductResponseDto> getProductByRangePrice(Long categoryId,Integer min, Integer max) {
         List<ProductEntity> products = productRepository.getProductByRangePrice(categoryId,min,max);
+        return ProductMapper.productsToProductResponseDto(products);
+    }
+
+    @Override
+    public List<ProductResponseDto> getProductsByDate(Long categoryId, String dateProduct) {
+        List<ProductEntity> products = productRepository.getProductByDate(categoryId,dateProduct);
+        return ProductMapper.productsToProductResponseDto(products);
+    }
+
+    @Override
+    public List<ProductResponseDto> getNewestProductsByCategoryId(Long categoryId) {
+        List<ProductEntity> products = productRepository.getNewestProductsByCategoryId(categoryId);
         return ProductMapper.productsToProductResponseDto(products);
     }
 

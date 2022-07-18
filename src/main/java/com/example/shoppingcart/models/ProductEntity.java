@@ -10,11 +10,9 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.UpdateTimestamp;
-
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -46,12 +44,12 @@ public class ProductEntity {
     @Column(name = "pro_avatar")
     private String avatar;
 
-    @JsonFormat(pattern = "dd-mmm-yyyy hh:mm:ss")
+    @JsonFormat(pattern = "dd-mmm-yyyy")
     @Column(name = "created_at")
     @CreationTimestamp
     private Timestamp createdAt;
 
-    @JsonFormat(pattern = "dd-mmm-yyyy hh:mm:ss")
+    @JsonFormat(pattern = "dd-mmm-yyyy")
     @Column(name = "updated_at")
     @UpdateTimestamp
     private Timestamp updatedAt;
@@ -73,4 +71,18 @@ public class ProductEntity {
     @Fetch(value = FetchMode.SUBSELECT)
     private List<OrderItemEntity> orderItemEntities;
 
+    @Override
+    public String toString() {
+        return "ProductEntity{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                ", active=" + active +
+                ", number=" + number +
+                ", description='" + description + '\'' +
+                ", avatar='" + avatar + '\'' +
+                ", createdAt=" + createdAt +
+                ", updatedAt=" + updatedAt +
+                '}';
+    }
 }

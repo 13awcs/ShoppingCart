@@ -33,6 +33,7 @@ public class OrderEntity {
     @OneToOne
     @JoinColumn(name = "or_user_id")
     private UserEntity userEntity;
+
     @ManyToOne
     @JoinColumn(name = "or_transaction_id")
     private TransactionEntity transactionEntity;

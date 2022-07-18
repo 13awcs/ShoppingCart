@@ -1,11 +1,14 @@
 package com.example.shoppingcart.controllers;
 
 import com.example.shoppingcart.common.ResponseObject;
+import com.example.shoppingcart.repositories.ProductRepository;
 import com.example.shoppingcart.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDate;
 
 @RestController
 public class ProductController {
@@ -47,5 +50,16 @@ public class ProductController {
                 ("successful", "insert successful", "insert successful " ,productService.getProductByRangePrice(categoryId,min,max)));
     }
 
+    @GetMapping("categories/{categoryId}/products/{dateProduct}")
+    public ResponseEntity<ResponseObject> getProductsByRangePrice(@PathVariable Long categoryId,@PathVariable String dateProduct){
+        return ResponseEntity.status(HttpStatus.CREATED).body(new ResponseObject
+                ("successful", "insert successful", "insert successful " ,productService.getProductsByDate(categoryId,dateProduct)));
+    }
+
+    @GetMapping("categories/{categoryId}/products/newest-products")
+    public ResponseEntity<ResponseObject> getNewestProductsByCategoryId(@PathVariable Long categoryId){
+        return ResponseEntity.status(HttpStatus.CREATED).body(new ResponseObject
+                ("successful", "insert successful", "insert successful " ,productService.getNewestProductsByCategoryId(categoryId)));
+    }
 
 }
