@@ -8,6 +8,6 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 public interface UserService {
-    UserResponseDto getUserById(Long id);
+    UserResponseDto getUserById(Long userId);
     UserResponseDto editUser(Long userId, UserRequestDto userRequestDto);
 }

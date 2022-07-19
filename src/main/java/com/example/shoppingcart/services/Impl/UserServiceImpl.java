@@ -1,5 +1,6 @@
 package com.example.shoppingcart.services.Impl;
 
+import com.example.shoppingcart.common.exceptions.ResourceNotFoundException;
 import com.example.shoppingcart.dtos.mapper.UserMapper;
 import com.example.shoppingcart.dtos.requestDto.UserRequestDto;
 import com.example.shoppingcart.dtos.responseDto.UserResponseDto;
@@ -22,15 +23,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserResponseDto getUserById(Long id) {
-        Optional<UserEntity> userEntity = userRepository.findById(id);
-        return UserMapper.userToUserResponseDto(userEntity.get());
+    public UserResponseDto getUserById(Long userId) {
+        UserEntity userEntity = userRepository.findById(userId).orElseThrow(()->new ResourceNotFoundException("User with id "+userId+" not found"));
+        return UserMapper.userToUserResponseDto(userEntity);
     }
 
     @Override
     public UserResponseDto editUser(Long userId, UserRequestDto userRequestDto) {
         UserEntity user = userRepository.findById(userId).orElseThrow(()->
-                new IllegalArgumentException("Khong tim thay userId : "+userId));
+                new ResourceNotFoundException("User with id "+userId+" not found"));
         user.setPhone(userRequestDto.getPhone());
         user.setAvatar(userRequestDto.getAvatar());
         user.setName(userRequestDto.getName());

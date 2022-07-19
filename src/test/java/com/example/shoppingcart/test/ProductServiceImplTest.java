@@ -1,4 +1,4 @@
-package com.example.shoppingcart;
+package com.example.shoppingcart.test;
 
 import com.example.shoppingcart.dtos.mapper.ProductMapper;
 import com.example.shoppingcart.dtos.responseDto.ProductResponseDto;

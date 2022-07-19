@@ -14,14 +14,12 @@ public class UserController {
     @Autowired
     UserService userService;
     @GetMapping("profile-user/{userId}")
-    public ResponseEntity<ResponseObject> getUserById(@PathVariable Long userId){
-        return ResponseEntity.status(HttpStatus.CREATED).body(new ResponseObject
-                ("successful", "insert successful", "insert successful " ,userService.getUserById(userId)));
+    public Object getUserById(@PathVariable Long userId){
+        return userService.getUserById(userId);
     }
 
     @PostMapping("profile-user/{userId}")
-    public ResponseEntity<ResponseObject> editUser(@PathVariable Long userId, UserRequestDto userRequestDto){
-        return ResponseEntity.status(HttpStatus.CREATED).body(new ResponseObject
-                ("successful", "insert successful", "insert successful " ,userService.editUser(userId,userRequestDto)));
+    public Object editUser(@PathVariable Long userId, UserRequestDto userRequestDto){
+        return userService.editUser(userId,userRequestDto);
     }
 }

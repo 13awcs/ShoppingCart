@@ -34,9 +34,8 @@ public class ProductController {
     }
 
     @GetMapping("/products/product-detail/{productId}")
-    public ResponseEntity<ResponseObject> getProductById(@PathVariable Long productId){
-        return ResponseEntity.status(HttpStatus.CREATED).body(new ResponseObject
-                ("successful", "insert successful", "insert successful " ,productService.getProductById(productId)));
+    public Object getProductById(@PathVariable Long productId){
+        return productService.getProductById(productId);
     }
 
     @GetMapping("category/{categoryId}/products")

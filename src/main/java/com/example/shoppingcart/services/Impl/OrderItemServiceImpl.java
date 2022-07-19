@@ -8,6 +8,7 @@ import com.example.shoppingcart.dtos.responseDto.OrderItemResponseDto;
 import com.example.shoppingcart.dtos.responseDto.ProductResponseDto;
 import com.example.shoppingcart.models.OrderEntity;
 import com.example.shoppingcart.models.OrderItemEntity;
+import com.example.shoppingcart.models.OrderItemKey;
 import com.example.shoppingcart.models.ProductEntity;
 import com.example.shoppingcart.repositories.OrderItemRepository;
 import com.example.shoppingcart.repositories.OrderRepository;
@@ -53,6 +54,7 @@ public class OrderItemServiceImpl implements OrderItemService {
 
         Optional<ProductEntity> productEntity = productRepository.findById(orderItemRequestDto.getProductId());
         Optional<OrderEntity> orderEntity = orderRepository.findById(orderItemRequestDto.getOrderId());
+        log.info("haha"+productEntity);
         if(productEntity.isEmpty()){
             ResponseEntity.status(HttpStatus.CREATED).
                     body(new ResponseObject("ERROR", "validate", " " + orderItemRequestDto.getProductId()+ " ", "Product Id is not found"));
@@ -62,25 +64,13 @@ public class OrderItemServiceImpl implements OrderItemService {
                     body(new ResponseObject("ERROR", "validate", " " + orderItemRequestDto.getOrderId()+ " ", "Order Id is not found"));
         }
         orderItemEntity.setOrderItemQuantity(orderItemRequestDto.getQuantity());
-
-        Integer productPrice = productService.getProductById(orderItemRequestDto.getProductId()).getPrice();
-
-        orderItemEntity.setOrderItemPrice(productPrice);
+        OrderItemKey orderItemKey = new OrderItemKey(orderItemRequestDto.getProductId(),orderItemRequestDto.getOrderId());
+        orderItemEntity.setId(orderItemKey);
+        orderItemEntity.setOrderItemPrice(productEntity.get().getPrice());
         orderItemEntity.setProductEntityItem(productEntity.get());
         orderItemEntity.setOrderEntityItem(orderEntity.get());
 
         return OrderItemMapper.orderItemToOrderItemResponseDto(orderItemRepository.save(orderItemEntity));
     }
 
-    @Override
-    public List<TopNumber> findTop(int topNumber) {
-
-        return null;
-    }
-
-//    @Override
-//    public List<ProductResponseDto> findTop(int topNumber) {
-//        List<Integer> products = orderItemRepository.findTop(topNumber);
-//        return null;
-//    }
 }

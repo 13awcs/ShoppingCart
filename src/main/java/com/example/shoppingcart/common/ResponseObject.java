@@ -10,8 +10,6 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class ResponseObject{
-
-
     private  String message ;
     private String fieldName ;
     private String code ;

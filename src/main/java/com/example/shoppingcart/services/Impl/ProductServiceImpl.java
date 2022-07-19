@@ -1,5 +1,7 @@
 package com.example.shoppingcart.services.Impl;
 
+import com.example.shoppingcart.common.exceptions.BadRequestException;
+import com.example.shoppingcart.common.exceptions.ResourceNotFoundException;
 import com.example.shoppingcart.dtos.mapper.ProductMapper;
 import com.example.shoppingcart.dtos.responseDto.ProductResponseDto;
 import com.example.shoppingcart.models.ProductEntity;
@@ -64,11 +66,18 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public ProductResponseDto getProductById(Long productId) {
         return ProductMapper.productToProductResponseDto(productRepository.findById(productId).orElseThrow(()->
-                new IllegalArgumentException("Khong tim thay userId : "+productId)));
+                new ResourceNotFoundException("Product with id "+productId+" not found")));
     }
 
     @Override
     public List<ProductResponseDto> getProductByRangePrice(Long categoryId,Integer min, Integer max) {
+        Boolean exits = categoryRepository.existsById(categoryId);
+        if(!exits){
+            throw new ResourceNotFoundException("Category with id "+categoryId+ " not found");
+
+        }
+        if(min>=max) throw new BadRequestException("Min should be smaller than Max");
+
         List<ProductEntity> products = productRepository.getProductByRangePrice(categoryId,min,max);
         return ProductMapper.productsToProductResponseDto(products);
     }

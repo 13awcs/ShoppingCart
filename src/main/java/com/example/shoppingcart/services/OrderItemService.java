@@ -10,5 +10,4 @@ import java.util.List;
 public interface OrderItemService {
     List<OrderItemEntity> getAll();
     OrderItemResponseDto addProductToOrder(OrderItemRequestDto orderItemRequestDto);
-    List<TopNumber> findTop(int topNumber);
 }
