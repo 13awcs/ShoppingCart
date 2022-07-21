@@ -20,7 +20,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         ApiError err = new ApiError(
                 LocalDateTime.now(),
                 HttpStatus.NOT_FOUND,
-                "Resource Not Found" ,
+                "Not found",
                 details);
         return ResponseEntityBuilder.build(err);
     }
@@ -33,8 +33,24 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         ApiError err = new ApiError(
                 LocalDateTime.now(),
                 HttpStatus.BAD_REQUEST,
-                ex.getMessage() ,
+                "Bad request",
                 details);
+        return ResponseEntityBuilder.build(err);
+    }
+
+    @ExceptionHandler(MethodArgumentTypeMismatchException.class)
+    protected ResponseEntity<Object> handleMethodArgumentTypeMismatch(
+            MethodArgumentTypeMismatchException ex) {
+
+        List<String> details = new ArrayList<String>();
+        details.add(ex.getMessage());
+
+        ApiError err = new ApiError(
+                LocalDateTime.now(),
+                HttpStatus.BAD_REQUEST,
+                "Type Mismatch",
+                details);
+
         return ResponseEntityBuilder.build(err);
     }
 

@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.constraints.PositiveOrZero;
 import java.time.LocalDate;
 
 @RestController
@@ -30,7 +31,7 @@ public class ProductController {
     @GetMapping("/products/{query}")
     public ResponseEntity<ResponseObject> searchProducts(@PathVariable String query){
         return ResponseEntity.status(HttpStatus.CREATED).body(new ResponseObject
-                ("successful", "insert successful", "insert successful " ,productService.searchProducts(query)));
+                ("successful", "insert successful", "insert successful " ,productService.searchProductsByName(query)));
     }
 
     @GetMapping("/products/product-detail/{productId}")
@@ -50,7 +51,7 @@ public class ProductController {
     }
 
     @GetMapping("categories/{categoryId}/products/{dateProduct}")
-    public ResponseEntity<ResponseObject> getProductsByRangePrice(@PathVariable Long categoryId,@PathVariable String dateProduct){
+    public ResponseEntity<ResponseObject> getProductsByDate(@PathVariable Long categoryId,@PathVariable String dateProduct){
         return ResponseEntity.status(HttpStatus.CREATED).body(new ResponseObject
                 ("successful", "insert successful", "insert successful " ,productService.getProductsByDate(categoryId,dateProduct)));
     }

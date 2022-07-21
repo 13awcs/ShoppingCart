@@ -1,6 +1,7 @@
 package com.example.shoppingcart.services.Impl;
 
 import com.example.shoppingcart.common.ResponseObject;
+import com.example.shoppingcart.common.exceptions.ResourceNotFoundException;
 import com.example.shoppingcart.dtos.mapper.OrderItemMapper;
 import com.example.shoppingcart.dtos.mapper.ProductMapper;
 import com.example.shoppingcart.dtos.requestDto.OrderItemRequestDto;
@@ -54,14 +55,11 @@ public class OrderItemServiceImpl implements OrderItemService {
 
         Optional<ProductEntity> productEntity = productRepository.findById(orderItemRequestDto.getProductId());
         Optional<OrderEntity> orderEntity = orderRepository.findById(orderItemRequestDto.getOrderId());
-        log.info("haha"+productEntity);
         if(productEntity.isEmpty()){
-            ResponseEntity.status(HttpStatus.CREATED).
-                    body(new ResponseObject("ERROR", "validate", " " + orderItemRequestDto.getProductId()+ " ", "Product Id is not found"));
+            throw new ResourceNotFoundException("Product with id "+orderItemRequestDto.getProductId()+ " not found");
         }
         if(orderEntity.isEmpty()){
-            ResponseEntity.status(HttpStatus.CREATED).
-                    body(new ResponseObject("ERROR", "validate", " " + orderItemRequestDto.getOrderId()+ " ", "Order Id is not found"));
+            throw new ResourceNotFoundException("Order with id "+orderItemRequestDto.getOrderId()+ " not found");
         }
         orderItemEntity.setOrderItemQuantity(orderItemRequestDto.getQuantity());
         OrderItemKey orderItemKey = new OrderItemKey(orderItemRequestDto.getProductId(),orderItemRequestDto.getOrderId());

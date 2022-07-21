@@ -1,6 +1,7 @@
 package com.example.shoppingcart.services.Impl;
 
 import com.example.shoppingcart.common.exceptions.BadRequestException;
+import com.example.shoppingcart.common.exceptions.MethodArgumentTypeMismatchException;
 import com.example.shoppingcart.common.exceptions.ResourceNotFoundException;
 import com.example.shoppingcart.dtos.mapper.ProductMapper;
 import com.example.shoppingcart.dtos.responseDto.ProductResponseDto;
@@ -31,6 +32,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<ProductResponseDto> getNewestProduct(String field, int topNumber) {
+        if(topNumber % 1 != 0) throw new MethodArgumentTypeMismatchException( "Type Mismatch");
         List<ProductEntity> productEntities = productRepository.findAll(Sort.by(Sort.Direction.DESC,field));
         List<ProductEntity> listTopProducts = new ArrayList<>();
         int count = 0;
@@ -52,13 +54,17 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<ProductResponseDto> searchProducts(String query) {
-        List<ProductEntity> products = productRepository.searchProducts(query);
+    public List<ProductResponseDto> searchProductsByName(String query) {
+        List<ProductEntity> products = productRepository.searchProductsByName(query);
         return ProductMapper.productsToProductResponseDto(products);
     }
 
     @Override
     public List<ProductResponseDto> getProductsByCategoryId(Long categoryId) {
+        Boolean exits = categoryRepository.existsById(categoryId);
+        if(!exits){
+            throw new ResourceNotFoundException("Category with id "+categoryId+ " not found");
+        }
         List<ProductEntity> products = productRepository.getProductsByCategoryId(categoryId);
         return ProductMapper.productsToProductResponseDto(products);
     }
@@ -74,7 +80,6 @@ public class ProductServiceImpl implements ProductService {
         Boolean exits = categoryRepository.existsById(categoryId);
         if(!exits){
             throw new ResourceNotFoundException("Category with id "+categoryId+ " not found");
-
         }
         if(min>=max) throw new BadRequestException("Min should be smaller than Max");
 
@@ -84,12 +89,20 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<ProductResponseDto> getProductsByDate(Long categoryId, String dateProduct) {
+        Boolean exits = categoryRepository.existsById(categoryId);
+        if(!exits){
+            throw new ResourceNotFoundException("Category with id "+categoryId+ " not found");
+        }
         List<ProductEntity> products = productRepository.getProductByDate(categoryId,dateProduct);
         return ProductMapper.productsToProductResponseDto(products);
     }
 
     @Override
     public List<ProductResponseDto> getNewestProductsByCategoryId(Long categoryId) {
+        Boolean exits = categoryRepository.existsById(categoryId);
+        if(!exits){
+            throw new ResourceNotFoundException("Category with id "+categoryId+ " not found");
+        }
         List<ProductEntity> products = productRepository.getNewestProductsByCategoryId(categoryId);
         return ProductMapper.productsToProductResponseDto(products);
     }

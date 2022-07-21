@@ -17,7 +17,7 @@ import java.util.Queue;
 public interface ProductRepository extends JpaRepository<ProductEntity,Long> {
     @Query(value = "SELECT * FROM products p WHERE " +
             "p.pro_name LIKE CONCAT('%',:query, '%')", nativeQuery = true)
-    List<ProductEntity> searchProducts(String query);
+    List<ProductEntity> searchProductsByName(String query);
 
     @Query(value = "SELECT * FROM products p WHERE p.pro_category_id = :id", nativeQuery = true)
     List<ProductEntity> getProductsByCategoryId(Long id);
